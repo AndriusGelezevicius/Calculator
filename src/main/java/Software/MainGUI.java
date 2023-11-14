@@ -9,7 +9,7 @@ public class MainGUI implements ActionListener {
         JFrame frame;
         JTextField textField;
         JButton[] numberButtons = new JButton[10];
-        JButton[] funcButtons = new JButton[8];
+        JButton[] funcButtons = new JButton[9];
         JButton addButton;
         JButton subButton;
         JButton multButton;
@@ -18,6 +18,7 @@ public class MainGUI implements ActionListener {
         JButton equButton;
         JButton delButton;
         JButton clrButton;
+        JButton minusButton;
         JPanel panel;
         double num1 = 0;
         double num2 = 0;
@@ -41,6 +42,7 @@ public class MainGUI implements ActionListener {
             divButton = new JButton("/");
             decButton = new JButton(".");
             equButton = new JButton("=");
+            minusButton = new JButton("(-)");
             delButton = new JButton("delete");
             clrButton = new JButton("clear");
 
@@ -53,8 +55,9 @@ public class MainGUI implements ActionListener {
             funcButtons[5] = equButton;
             funcButtons[6] = delButton;
             funcButtons[7] = clrButton;
+            funcButtons[8] = minusButton;
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             funcButtons[i].addActionListener(this);
             funcButtons[i].setFocusable(false);
         }
@@ -65,6 +68,7 @@ public class MainGUI implements ActionListener {
         }
 
         delButton.setBounds(50,450,100,30);
+        minusButton.setBounds(150, 450,50,30);
         clrButton.setBounds(200, 450,100,30);
 
         panel = new JPanel();
@@ -89,6 +93,7 @@ public class MainGUI implements ActionListener {
 
         frame.add(panel);
         frame.add(delButton);
+        frame.add(minusButton);
         frame.add(clrButton);
         frame.add(textField);
         frame.setVisible(true);
@@ -146,6 +151,22 @@ public class MainGUI implements ActionListener {
                 }
                 textField.setText(String.valueOf(result));
                 num1 = result;
+        }
+        if (e.getSource() == clrButton){
+            textField.setText(" ");
+        }
+        if (e.getSource() == delButton){
+                String string = textField.getText();
+                textField.setText("");
+            for (int i = 0; i < string.length()-1;i++) {
+                textField.setText(textField.getText()+string.charAt(i));
+            }
+        }
+        if (e.getSource() == minusButton){
+            double temp = Double.parseDouble(textField.getText());
+            temp*=-1;
+            textField.setText(String.valueOf(temp));
+
         }
     }
 }
