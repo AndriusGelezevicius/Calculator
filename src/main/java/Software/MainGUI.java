@@ -1,6 +1,7 @@
 package Software;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,13 +26,13 @@ public class MainGUI implements ActionListener {
 
     public void drawingFrame(){
             frame = new JFrame();
-            frame.setSize(350, 550);
+            frame.setSize(400, 550);
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             frame.setLocationRelativeTo(null);
             frame.setLayout(null);
 
             textField = new JTextField();
-            textField.setBounds(50,25,250,50);
+            textField.setBounds(50,25,280,50);
             textField.setEnabled(false);
 
             addButton = new JButton("+");
@@ -66,10 +67,31 @@ public class MainGUI implements ActionListener {
         delButton.setBounds(50,450,100,30);
         clrButton.setBounds(200, 450,100,30);
 
+        panel = new JPanel();
+        panel.setBounds(50, 100, 280,300);
+        panel.setLayout(new GridLayout(4,4,10,10));
+
+        panel.add(numberButtons[1]);
+        panel.add(numberButtons[2]);
+        panel.add(numberButtons[3]);
+        panel.add(addButton);
+        panel.add(numberButtons[4]);
+        panel.add(numberButtons[5]);
+        panel.add(numberButtons[6]);
+        panel.add(subButton);
+        panel.add(numberButtons[7]);
+        panel.add(numberButtons[8]);
+        panel.add(numberButtons[9]);
+        panel.add(multButton);
+        panel.add(decButton);
+        panel.add(equButton);
+        panel.add(divButton);
+
+        frame.add(panel);
         frame.add(delButton);
         frame.add(clrButton);
         frame.add(textField);
-            frame.setVisible(true);
+        frame.setVisible(true);
 
 
     }
